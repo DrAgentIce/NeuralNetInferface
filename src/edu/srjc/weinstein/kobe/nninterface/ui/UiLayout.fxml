@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="752.0" prefWidth="1195.0" xmlns="http://javafx.com/javafx/10.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.srjc.weinstein.kobe.nninterface.ui.UiController">
+    <TabPane tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+             AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Tab fx:id="mainTab" text="Main">
+            <AnchorPane fx:id="mainPane">
+                <GridPane prefHeight="723.3333333333334" prefWidth="1195.3333333333333" AnchorPane.bottomAnchor="0.0"
+                          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="772.2222900390625" minWidth="10.0"
+                                           prefWidth="756.2222900390625"/>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="591.7777099609375" minWidth="10.0"
+                                           prefWidth="439.7777099609375"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="603.0" minHeight="0.0" prefHeight="640.0"
+                          prefWidth="603.0"
+                          style="-fx-border-color: lightgrey; -fx-border-radius: 5; -fx-border-width: 2;"
+                          GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER"
+                          GridPane.vgrow="NEVER">
+                        <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 3;">
+                            <Button fx:id="canvasClearBttn" mnemonicParsing="false" onAction="#canvasClear"
+                                    style="-fx-background-color: lightgrey; -fx-border-color: #bfc4cc;" text="Clear"/>
+                            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="497.0"
+                                   text="Digit Input">
+                                <font>
+                                    <Font size="17.0"/>
+                                </font>
+                            </Label>
+                            <Button alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity"
+                                    minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.41"
+                                    prefHeight="23.0" prefWidth="23.0"
+                                    style="-fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-background-color: lightblue;"
+                                    text="?" textAlignment="CENTER" wrapText="true">
+                                <font>
+                                    <Font size="10.0"/>
+                                </font>
+                                <tooltip>
+                                    <Tooltip fx:id="tooltip11" autoHide="true" consumeAutoHidingEvents="false"
+                                             hideOnEscape="false"
+                                             style="-fx-show-delay: 0.0ms; -fx-show-duration: indefinite;"
+                                             text="Draw a number between 0-9." wrapText="true"/>
+                                </tooltip>
+                            </Button>
+                        </ToolBar>
+                        <Canvas fx:id="canvasInput" height="600.0" onMouseClicked="#drawCanvas"
+                                onMouseDragged="#drawCanvas" onMousePressed="#drawCanvas" onMouseReleased="#drawCanvas"
+                                width="600.0" VBox.vgrow="NEVER">
+                            <cursor>
+                                <Cursor fx:constant="CROSSHAIR"/>
+                            </cursor>
+                        </Canvas>
+                    </VBox>
+                    <Button fx:id="guessBttn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                            onAction="#guess" prefHeight="25.0" prefWidth="251.0" text="Guess" textAlignment="CENTER"
+                            GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                    <Label fx:id="guessOutput" alignment="CENTER" contentDisplay="CENTER" prefHeight="56.0"
+                           prefWidth="147.0" text="Output" textAlignment="CENTER" GridPane.columnIndex="1"
+                           GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <GridPane.margin>
+                            <Insets bottom="120.0"/>
+                        </GridPane.margin>
+                    </Label>
+                    <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                            minWidth="-Infinity" mnemonicParsing="false" opacity="0.41" prefHeight="23.0"
+                            prefWidth="23.0"
+                            style="-fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-background-color: lightblue;"
+                            text="?" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1"
+                            GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER"
+                            GridPane.vgrow="NEVER">
+                        <font>
+                            <Font size="10.0"/>
+                        </font>
+                        <tooltip>
+                            <Tooltip fx:id="tooltip111" autoHide="true" consumeAutoHidingEvents="false"
+                                     hideOnEscape="false" style="-fx-show-delay: 0.0ms; -fx-show-duration: indefinite;"
+                                     text="Guesses which digit was drawn." wrapText="true"/>
+                        </tooltip>
+                        <GridPane.margin>
+                            <Insets left="275.0"/>
+                        </GridPane.margin>
+                    </Button>
+                    <Label fx:id="guessBttnWrapper" disable="true" prefHeight="4.0" prefWidth="239.0"
+                           GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                </GridPane>
+            </AnchorPane>
+        </Tab>
+        <Tab fx:id="settingsTab" text="Settings">
+            <AnchorPane fx:id="settingsPane">
+                <GridPane alignment="CENTER" layoutX="144.0" layoutY="7.0" prefHeight="723.0" prefWidth="1195.0"
+                          AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                          AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <TitledPane alignment="CENTER" animated="false" collapsible="false" contentDisplay="CENTER"
+                                maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                prefHeight="150.0" prefWidth="454.0" text="Weights" textAlignment="CENTER"
+                                GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER"
+                                GridPane.vgrow="NEVER">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="124.0" prefWidth="440.0">
+                            <HBox layoutX="72.0" layoutY="37.0" prefHeight="25.0" prefWidth="268.0">
+                                <Label fx:id="weightsFilename" prefHeight="28.0" prefWidth="223.0"
+                                       style="-fx-border-color: grey; -fx-border-radius: 3;" text="FileName"/>
+                                <Button fx:id="loadWeightBttn" mnemonicParsing="false" onAction="#loadWeights"
+                                        text="Load"/>
+                            </HBox>
+                            <Button alignment="CENTER" layoutX="340.0" layoutY="38.0" maxHeight="-Infinity"
+                                    maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                    mnemonicParsing="false" opacity="0.41" prefHeight="23.0" prefWidth="23.0"
+                                    style="-fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-background-color: lightblue;"
+                                    text="?" textAlignment="CENTER" wrapText="true">
+                                <font>
+                                    <Font size="10.0"/>
+                                </font>
+                                <tooltip>
+                                    <Tooltip fx:id="tooltip1" autoHide="true" consumeAutoHidingEvents="false"
+                                             hideOnEscape="false" maxWidth="-Infinity" prefWidth="400.0"
+                                             style="-fx-show-delay: 0.0ms; -fx-show-duration: indefinite;"
+                                             text="Load weights for the Neural Net. The default weights file &quot;weights.txt&quot; are the weights for a Neural Net with 1 hidden layer and 60 neurons. If the weight file is for a network with a different number of Hidden Nodes, a new network with that number of nodes must be built. Note: loading weights allows a network to remember its training, so a network with trained weights does not need to be retrained."
+                                             wrapText="true"/>
+                                </tooltip>
+                            </Button>
+                        </AnchorPane>
+                    </TitledPane>
+                    <TitledPane alignment="CENTER" animated="false" collapsible="false" contentDisplay="CENTER"
+                                maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="644.0" prefWidth="446.0"
+                                GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER"
+                                GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                        <graphic>
+                            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="600.0" minHeight="-Infinity"
+                                   minWidth="-Infinity" text="Create New Neural Net"/>
+                        </graphic>
+                        <VBox alignment="TOP_CENTER" prefHeight="529.0" prefWidth="452.0">
+                            <Pane prefHeight="34.0" prefWidth="432.0">
+                                <Label alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT"
+                                       text="Number of Nodes in Hidden Layer" underline="true">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                                <Button alignment="CENTER" layoutX="215.0" layoutY="2.0" maxHeight="-Infinity"
+                                        maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                        mnemonicParsing="false" opacity="0.41" prefHeight="23.0" prefWidth="23.0"
+                                        style="-fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-background-color: lightblue;"
+                                        text="?" textAlignment="CENTER" wrapText="true">
+                                    <font>
+                                        <Font size="10.0"/>
+                                    </font>
+                                    <tooltip>
+                                        <Tooltip fx:id="tooltip21" autoHide="true" consumeAutoHidingEvents="false"
+                                                 hideOnEscape="false" maxWidth="-Infinity" prefWidth="400.0"
+                                                 style="-fx-show-delay: 0.0ms; -fx-show-duration: indefinite;"
+                                                 text="The number of hidden nodes effects the total possible accuracy of the system. If the number of nodes is too small the network may have a low max accuracy, if the number is to high the network might overfit, and become less accurate.  As the number of hidden nodes increases the time to train the network and have it guess input will significantly increase."
+                                                 wrapText="true"/>
+                                    </tooltip>
+                                </Button>
+                            </Pane>
+                            <Label fx:id="numOfNodes" alignment="CENTER" text="Label">
+                                <VBox.margin>
+                                    <Insets/>
+                                </VBox.margin>
+                            </Label>
+                            <Slider fx:id="hiddenLayerSlider" blockIncrement="1.0" majorTickUnit="10.0"
+                                    minorTickCount="8" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0"
+                                    prefWidth="342.0" showTickMarks="true" snapToTicks="true"
+                                    style="-fx-border-color: lightgrey; -fx-border-radius: 3;" value="60.0"/>
+                            <Separator prefHeight="23.0" prefWidth="432.0" style="-fx-: black;"/>
+                            <Pane prefHeight="34.0" prefWidth="432.0">
+                                <Label alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" text="Build New Neural Net"
+                                       underline="true">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                            </Pane>
+                            <Pane prefHeight="34.0" prefWidth="424.0">
+                                <Button alignment="CENTER" layoutX="195.0" mnemonicParsing="false"
+                                        onAction="#buildNetwork" text="Build"/>
+                                <Button alignment="CENTER" layoutX="244.0" layoutY="1.0" maxHeight="-Infinity"
+                                        maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                        mnemonicParsing="false" opacity="0.41" prefHeight="23.0" prefWidth="23.0"
+                                        style="-fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-background-color: lightblue;"
+                                        text="?" textAlignment="CENTER" wrapText="true">
+                                    <font>
+                                        <Font size="10.0"/>
+                                    </font>
+                                    <tooltip>
+                                        <Tooltip fx:id="tooltip2" autoHide="true" consumeAutoHidingEvents="false"
+                                                 hideOnEscape="false" maxWidth="-Infinity" prefWidth="400.0"
+                                                 style="-fx-show-delay: 0.0ms; -fx-show-duration: indefinite;"
+                                                 text="Builds a Neural Net with the number of hidden nodes listed above. In order for the network to identify digits it must be trained( The proper weights must be found). Weights are specific to the number of hidden nodes so weight files from other configurations will not be valid."
+                                                 wrapText="true"/>
+                                    </tooltip>
+                                </Button>
+                            </Pane>
+                            <Separator prefHeight="20.0" prefWidth="432.0" style="-fx-: black;"/>
+                            <Pane prefHeight="34.0" prefWidth="432.0">
+                                <Label alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" text="Training Data"
+                                       underline="true">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                            </Pane>
+                            <Pane prefHeight="40.0" prefWidth="432.0">
+                                <Label fx:id="trainImageFilename" layoutX="101.0" layoutY="6.0" prefHeight="28.0"
+                                       prefWidth="223.0" style="-fx-border-color: grey; -fx-border-radius: 3;"
+                                       text="FileName"/>
+                                <Button fx:id="loadImageTrainBttn" layoutX="324.0" layoutY="8.0" mnemonicParsing="false"
+                                        onAction="#loadTrainingImageData" text="Load"/>
+                                <Button alignment="CENTER" layoutX="367.0" layoutY="9.0" maxHeight="-Infinity"
+                                        maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                        mnemonicParsing="false" opacity="0.41" prefHeight="23.0" prefWidth="23.0"
+                                        style="-fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-background-color: lightblue;"
+                                        text="?" textAlignment="CENTER" wrapText="true">
+                                    <font>
+                                        <Font size="10.0"/>
+                                    </font>
+                                    <tooltip>
+                                        <Tooltip fx:id="tooltip3" autoHide="true" consumeAutoHidingEvents="false"
+                                                 hideOnEscape="false"
+                                                 style="-fx-show-delay: 0.0ms; -fx-show-duration: indefinite;"
+                                                 text=".idx formated files. The format specifications can be found at the MNIST website. The files are bainary containing the images as int arrays."
+                                                 wrapText="true"/>
+                                    </tooltip>
+                                </Button>
+                                <Label layoutX="43.0" layoutY="12.0" text="Image File"/>
+                            </Pane>
+                            <Pane prefHeight="40.0" prefWidth="432.0">
+                                <Label fx:id="trainLabelFilename" layoutX="101.0" layoutY="6.0" prefHeight="28.0"
+                                       prefWidth="223.0" style="-fx-border-color: grey; -fx-border-radius: 3;"
+                                       text="FileName"/>
+                                <Button fx:id="loadLabelTrainBttn" layoutX="324.0" layoutY="8.0" mnemonicParsing="false"
+                                        onAction="#loadTrainingLabelData" text="Load"/>
+                                <Button alignment="CENTER" layoutX="368.0" layoutY="9.0" maxHeight="-Infinity"
+                                        maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                        mnemonicParsing="false" opacity="0.41" prefHeight="23.0" prefWidth="23.0"
+                                        style="-fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-background-color: lightblue;"
+                                        text="?" textAlignment="CENTER" wrapText="true">
+                                    <font>
+                                        <Font size="10.0"/>
+                                    </font>
+                                    <tooltip>
+                                        <Tooltip fx:id="tooltip4" autoHide="true" consumeAutoHidingEvents="false"
+                                                 hideOnEscape="false"
+                                                 style="-fx-show-delay: 0.0ms; -fx-show-duration: indefinite;"
+                                                 text=".idx formated files. The format specifications can be found at the MNIST website. The file is binary  and contains the real values of the images."
+                                                 wrapText="true"/>
+                                    </tooltip>
+                                </Button>
+                                <Label layoutX="43.0" layoutY="12.0" text="Label File"/>
+                            </Pane>
+                            <Pane/>
+                            <Separator prefHeight="20.0" prefWidth="432.0" style="-fx-: black;"/>
+                            <Pane prefHeight="34.0" prefWidth="432.0">
+                                <Label alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" text="Testing Data"
+                                       underline="true">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                            </Pane>
+                            <Pane prefHeight="40.0" prefWidth="432.0">
+                                <Label fx:id="testImageFilename" layoutX="101.0" layoutY="6.0" prefHeight="28.0"
+                                       prefWidth="223.0" style="-fx-border-color: grey; -fx-border-radius: 3;"
+                                       text="FileName"/>
+                                <Button fx:id="loadTestImageBttn" layoutX="324.0" layoutY="8.0" mnemonicParsing="false"
+                                        onAction="#loadTestingImageData" text="Load"/>
+                                <Button alignment="CENTER" layoutX="367.0" layoutY="9.0" maxHeight="-Infinity"
+                                        maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                        mnemonicParsing="false" opacity="0.41" prefHeight="23.0" prefWidth="23.0"
+                                        style="-fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-background-color: lightblue;"
+                                        text="?" textAlignment="CENTER" wrapText="true">
+                                    <font>
+                                        <Font size="10.0"/>
+                                    </font>
+                                    <tooltip>
+                                        <Tooltip fx:id="tooltip5" autoHide="true" consumeAutoHidingEvents="false"
+                                                 hideOnEscape="false"
+                                                 style="-fx-show-delay: 0.0ms; -fx-show-duration: indefinite;"
+                                                 text=".idx formated files. The format specifications can be found at the MNIST website. The files are bainary containing the images as int arrays."
+                                                 wrapText="true"/>
+                                    </tooltip>
+                                </Button>
+                                <Label layoutX="43.0" layoutY="12.0" text="Image File"/>
+                            </Pane>
+                            <Pane prefHeight="40.0" prefWidth="432.0">
+                                <Label fx:id="testLabelFilename" layoutX="101.0" layoutY="6.0" prefHeight="28.0"
+                                       prefWidth="223.0" style="-fx-border-color: grey; -fx-border-radius: 3;"
+                                       text="FileName"/>
+                                <Button fx:id="loadTestLabelBttn" layoutX="324.0" layoutY="8.0" mnemonicParsing="false"
+                                        onAction="#loadTestingLabelData" text="Load"/>
+                                <Button alignment="CENTER" layoutX="367.0" layoutY="9.0" maxHeight="-Infinity"
+                                        maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                        mnemonicParsing="false" opacity="0.41" prefHeight="23.0" prefWidth="23.0"
+                                        style="-fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-background-color: lightblue;"
+                                        text="?" textAlignment="CENTER" wrapText="true">
+                                    <font>
+                                        <Font size="10.0"/>
+                                    </font>
+                                    <tooltip>
+                                        <Tooltip fx:id="tooltip6" autoHide="true" consumeAutoHidingEvents="false"
+                                                 hideOnEscape="false"
+                                                 style="-fx-show-delay: 0.0ms; -fx-show-duration: indefinite;"
+                                                 text=".idx formated files. The format specifications can be found at the MNIST website. The file is binary  and contains the real values of the images."
+                                                 wrapText="true"/>
+                                    </tooltip>
+                                </Button>
+                                <Label layoutX="43.0" layoutY="12.0" text="Label File"/>
+                            </Pane>
+                            <Pane prefHeight="33.0" prefWidth="424.0">
+                                <Hyperlink fx:id="MNISTLink" layoutX="168.0" onAction="#openMNIST" text="MNIST Dataset"
+                                           textAlignment="CENTER" underline="true"/>
+                                <Button alignment="CENTER" layoutX="253.0" layoutY="4.0" maxHeight="-Infinity"
+                                        maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                        mnemonicParsing="false" opacity="0.41" prefHeight="23.0" prefWidth="23.0"
+                                        style="-fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-background-color: lightblue;"
+                                        text="?" textAlignment="CENTER" wrapText="true">
+                                    <font>
+                                        <Font size="10.0"/>
+                                    </font>
+                                    <tooltip>
+                                        <Tooltip fx:id="tooltip7" autoHide="true" consumeAutoHidingEvents="false"
+                                                 hideOnEscape="false"
+                                                 style="-fx-show-delay: 0.0ms; -fx-show-duration: indefinite;"
+                                                 text="The official MNIST website, where the data files used to train the orginal network can be found."
+                                                 wrapText="true"/>
+                                    </tooltip>
+                                </Button>
+                            </Pane>
+                            <Separator prefHeight="24.0" prefWidth="432.0" style="-fx-: black;"/>
+                            <Pane prefHeight="34.0" prefWidth="432.0">
+                                <Label alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" text="Train"
+                                       underline="true">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                            </Pane>
+                            <Pane/>
+                            <Pane prefHeight="189.0" prefWidth="424.0">
+                                <Spinner fx:id="epochSpinner" amountToStepBy="1" initialValue="1" layoutX="93.0"
+                                         layoutY="24.0" max="250" min="1" prefHeight="25.0" prefWidth="84.0"/>
+                                <Spinner fx:id="learningRateSpinner" amountToStepBy="0.0001" initialValue="0.001"
+                                         layoutX="195.0" layoutY="24.0" max="10.0" min="0.0001" prefHeight="25.0"
+                                         prefWidth="102.0"/>
+                                <Button fx:id="trainBttn" layoutX="309.0" layoutY="24.0" mnemonicParsing="false"
+                                        onAction="#train" text="Train"/>
+                                <ProgressBar fx:id="progressBar" layoutX="116.0" layoutY="63.0" prefWidth="200.0"
+                                             progress="0.0"/>
+                                <Label fx:id="progressLabel" layoutX="322.0" layoutY="64.0" text="0/20"/>
+                                <Label layoutX="97.0" layoutY="6.0" text="Epochs"/>
+                                <Label layoutX="195.0" layoutY="6.0" text="Learning Rate"/>
+                                <Button fx:id="newWeightBttn" disable="true" layoutX="177.0" layoutY="143.0"
+                                        mnemonicParsing="false" onAction="#newWeights" text="Save Weights"/>
+                                <Button alignment="CENTER" layoutX="136.0" layoutY="1.0" maxHeight="-Infinity"
+                                        maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                        mnemonicParsing="false" opacity="0.41" prefHeight="23.0" prefWidth="23.0"
+                                        style="-fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-background-color: lightblue;"
+                                        text="?" textAlignment="CENTER" wrapText="true">
+                                    <font>
+                                        <Font size="10.0"/>
+                                    </font>
+                                    <tooltip>
+                                        <Tooltip fx:id="tooltip8" autoHide="true" consumeAutoHidingEvents="false"
+                                                 hideOnEscape="false" maxWidth="-Infinity" prefWidth="400.0"
+                                                 style="-fx-show-delay: 0.0ms; -fx-show-duration: indefinite;"
+                                                 text="The number of Times the network should go over the entire set of data. The default network was trained to about 100 epochs."
+                                                 wrapText="true"/>
+                                    </tooltip>
+                                </Button>
+                                <Button alignment="CENTER" layoutX="269.0" layoutY="2.0" maxHeight="-Infinity"
+                                        maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                        mnemonicParsing="false" opacity="0.41" prefHeight="23.0" prefWidth="23.0"
+                                        style="-fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-background-color: lightblue;"
+                                        text="?" textAlignment="CENTER" wrapText="true">
+                                    <font>
+                                        <Font size="10.0"/>
+                                    </font>
+                                    <tooltip>
+                                        <Tooltip fx:id="tooltip9" autoHide="true" consumeAutoHidingEvents="false"
+                                                 hideOnEscape="false" maxHeight="-Infinity" maxWidth="-Infinity"
+                                                 prefWidth="400.0"
+                                                 style="-fx-show-delay: 0.0ms; -fx-show-duration: indefinite;"
+                                                 text="The learning rate modifies how fast the network learns. To large and the network wont learn, to small and the network will take to long to learn.  The default network was trained with a value of 0.001. This value should be tried first. If the network does not increase in accuracy quickly, try increasing and decresing by a factor of 10, until the networks accuracy is increasing at a decent rate, then the number can be increased slowly until it becomes unstable, at which point the value of the rate should be about 2/3rds of value where the rate first becomes unstable."
+                                                 wrapText="true"/>
+                                    </tooltip>
+                                </Button>
+                                <Label layoutX="163.0" layoutY="102.0" text="Accuracy: "/>
+                                <Pane layoutX="221.0" layoutY="86.0" prefHeight="50.0" prefWidth="65.0"
+                                      style="-fx-border-color: lightgrey; -fx-border-radius: 5;">
+                                    <Label fx:id="nnAccuracy" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0"
+                                           layoutY="17.0" nodeOrientation="LEFT_TO_RIGHT" text="00.00%"
+                                           textAlignment="CENTER"/>
+                                </Pane>
+                                <Button alignment="CENTER" layoutX="266.0" layoutY="144.0" maxHeight="-Infinity"
+                                        maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                        mnemonicParsing="false" opacity="0.41" prefHeight="23.0" prefWidth="23.0"
+                                        style="-fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-background-color: lightblue;"
+                                        text="?" textAlignment="CENTER" wrapText="true">
+                                    <font>
+                                        <Font size="10.0"/>
+                                    </font>
+                                    <tooltip>
+                                        <Tooltip fx:id="tooltip91" autoHide="true" consumeAutoHidingEvents="false"
+                                                 hideOnEscape="false" maxHeight="-Infinity" maxWidth="-Infinity"
+                                                 prefWidth="400.0"
+                                                 style="-fx-show-delay: 0.0ms; -fx-show-duration: indefinite;"
+                                                 text="Training finds weights for the system. These weights are automatically applied to the current Neural Net. These weights are lost if, new weights are loaded, the network is retrained, or the program is closed. Saving weights, exports the current weights of the Neural Net to a file so they network doesn't have to be reloaded."
+                                                 wrapText="true"/>
+                                    </tooltip>
+                                </Button>
+                            </Pane>
+                        </VBox>
+                    </TitledPane>
+                </GridPane>
+            </AnchorPane>
+        </Tab>
+    </TabPane>
+</AnchorPane>
